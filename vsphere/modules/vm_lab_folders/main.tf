@@ -37,6 +37,12 @@ resource "vsphere_folder" "linux" {
 
 # Grandchild Folder(s)
 
+resource "vsphere_folder" "kubemanager" {
+  path          = "${vsphere_folder.kubernetes.path}/Manager"
+  type          = "vm"
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
+
 resource "vsphere_folder" "kubemasters" {
   path          = "${vsphere_folder.kubernetes.path}/Controllers"
   type          = "vm"
@@ -44,7 +50,7 @@ resource "vsphere_folder" "kubemasters" {
 }
 
 resource "vsphere_folder" "kubeworkers" {
-  path          = "${vsphere_folder.kubernetes.path}/Workers"
+  path          = "${vsphere_folder.kubernetes.path}/Worker"
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

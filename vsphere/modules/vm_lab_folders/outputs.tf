@@ -10,11 +10,6 @@ output "folder_kubernetes_path" {
   value       = vsphere_folder.kubernetes.path
 }
 
-output "folder_kubernetes_manager_path" {
-  description = "Kubernetes manager VM."
-  value       = vsphere_folder.kubemanager.path
-}
-
 output "folder_kubernetes_master_path" {
   description = "Kubernetes mater nodes."
   value       = vsphere_folder.kubemasters.path
